@@ -19,10 +19,15 @@ public class GroundController : MonoBehaviour {
 
     private static List<Ground> _groundList = new List<Ground>();
 
-    public static Planes activePlane = Planes.Material;
+    public static Planes activePlane;
+
+    public Planes startPlane = Planes.Material;
+
+    public Material[] materials;
 
     public void Awake()
     {
+        activePlane = startPlane;
         SetGroundPlanes();
     }
 
