@@ -11,6 +11,7 @@ public class SimplePlayerController : MonoBehaviour {
     private Rigidbody2D _rigidbody2D;
 
     private bool isGrounded = false;
+    private int planeIndex = 0;
 
 	// Use this for initialization
 	void Start () {
@@ -20,10 +21,10 @@ public class SimplePlayerController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         if (Input.GetKeyDown(KeyCode.X))
-            GroundController.SetActivePlane(Planes.Aethereal);
-
-        if (Input.GetKeyDown(KeyCode.Z))
-            GroundController.SetActivePlane(Planes.Material);
+        {
+            planeIndex = (planeIndex + 1) % 2;
+            PlaneController.SetActivePlane((Planes)planeIndex);
+        }
     }
 
     void FixedUpdate()
